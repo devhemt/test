@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<!-- @author    Tigren Solutions <info@tigren.com>-->
+<!-- @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.-->
+<!-- @license   Open Software License ("OSL") v. 3.0-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="tigren_customergroupcatalog_rule" resource="default" engine="innodb" comment="tigren_customergroupcatalog_rule Table">
+        <column xsi:type="int" name="rule_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="rule_id" />
+        </constraint>
+        <column name="name" nullable="true" xsi:type="text" comment="name" />
+        <column name="discount_amount" nullable="true" xsi:type="smallint" comment="discount_amount" identity="false" />
+        <column name="start_time" nullable="true" xsi:type="datetime" comment="start_time" />
+        <column name="end_time" nullable="true" xsi:type="datetime" comment="end_time" />
+        <column name="priority" nullable="true" xsi:type="int" comment="priority" identity="false" />
+        <column name="active" nullable="true" xsi:type="smallint" comment="active" identity="false" />
+    </table>
+    <table name="tigren_rule_customer_group" resource="default" engine="innodb" comment="tigren_rule_customer_group Table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Id" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id" />
+        </constraint>
+        <column name="rule_id" nullable="true" xsi:type="int" comment="Rule Id" identity="false" />
+        <column name="customer_group_id" nullable="true" xsi:type="int" comment="Customer Group Id" identity="false" />
+    </table>
+    <table name="tigren_rule_products" resource="default" engine="innodb" comment="tigren_rule_products Table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Id" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id" />
+        </constraint>
+        <column name="rule_id" nullable="true" xsi:type="int" comment="Rule Id" identity="false" />
+        <column name="product_id" nullable="true" xsi:type="int" comment="Product Id" identity="false" />
+    </table>
+    <table name="tigren_rule_store" resource="default" engine="innodb" comment="tigren_rule_store Table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Id" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id" />
+        </constraint>
+        <column name="rule_id" nullable="true" xsi:type="int" comment="Rule Id" identity="false" />
+        <column name="store_id" nullable="true" xsi:type="int" comment="Store Id" identity="false" />
+    </table>
+    <table name="customer_group_catalog_history" resource="default" engine="innodb" comment="customer_group_catalog_history Table">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id" />
+        </constraint>
+        <column name="order_id" nullable="true" xsi:type="int" comment="Order Id" identity="false" />
+        <column name="customer_id" nullable="true" xsi:type="int" comment="Customer Id" identity="false" />
+        <column name="rule_id" nullable="true" xsi:type="int" comment="Rule Id" identity="false" />
+    </table>
+</schema>

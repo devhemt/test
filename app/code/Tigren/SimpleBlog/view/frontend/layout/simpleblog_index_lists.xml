@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- @author    Tigren Solutions <info@tigren.com>-->
+<!-- @copyright Copyright (c) 2023 Tigren Solutions <https://www.tigren.com>. All rights reserved.-->
+<!-- @license   Open Software License ("OSL") v. 3.0-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Tigren\SimpleBlog\Block\Posts" name="tigren.Simpleblog.posts" template="Tigren_SimpleBlog::items.phtml">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="some_string"
+                              translate="true"
+                              xsi:type="string">Some String
+                        </item>
+                        <item name="some_number"
+                              xsi:type="number">42
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

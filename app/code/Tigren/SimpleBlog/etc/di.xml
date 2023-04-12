@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<!-- @author    Tigren Solutions <info@tigren.com>-->
+<!-- @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.-->
+<!-- @license   Open Software License ("OSL") v. 3.0-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Tigren\SimpleBlog\Api\TigrenBlogCategoryRepositoryInterface" type="Tigren\SimpleBlog\Model\TigrenBlogCategoryRepository" />
+    <preference for="Tigren\SimpleBlog\Api\Data\TigrenBlogCategoryInterface" type="Tigren\SimpleBlog\Model\TigrenBlogCategory" />
+    <preference for="Tigren\SimpleBlog\Api\Data\TigrenBlogCategorySearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <virtualType name="Tigren\SimpleBlog\Model\ResourceModel\TigrenBlogCategory\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">tigren_simpleblog_tigren_blog_category</argument>
+            <argument name="resourceModel" xsi:type="string">Tigren\SimpleBlog\Model\ResourceModel\TigrenBlogCategory\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="tigren_simpleblog_tigren_blog_category_listing_data_source" xsi:type="string">Tigren\SimpleBlog\Model\ResourceModel\TigrenBlogCategory\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Tigren\SimpleBlog\Api\TigrenBlogPostRepositoryInterface" type="Tigren\SimpleBlog\Model\TigrenBlogPostRepository" />
+    <preference for="Tigren\SimpleBlog\Api\Data\TigrenBlogPostInterface" type="Tigren\SimpleBlog\Model\TigrenBlogPost" />
+    <preference for="Tigren\SimpleBlog\Api\Data\TigrenBlogPostSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <virtualType name="Tigren\SimpleBlog\Model\ResourceModel\TigrenBlogPost\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">tigren_simpleblog_tigren_blog_post</argument>
+            <argument name="resourceModel" xsi:type="string">Tigren\SimpleBlog\Model\ResourceModel\TigrenBlogPost\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="tigren_simpleblog_tigren_blog_post_listing_data_source" xsi:type="string">Tigren\SimpleBlog\Model\ResourceModel\TigrenBlogPost\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

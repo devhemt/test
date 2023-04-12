@@ -1,0 +1,105 @@
+<?php
+/**
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ */
+/** @var \Tigren\SimpleBlog\Block\Posts $block */
+?>
+<?php $posts = $block->getPostItems(); ?>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+
+</style>
+<div class="post-content">
+    <table style="width:100%">
+        <tr>
+            <th><?php echo __('Title') ?></th>
+            <th><?php echo __('Short Content') ?></th>
+        </tr>
+        <?php if (count($posts)) : ?>
+            <?php foreach ($posts as $post) : ?>
+                <tr>
+                    <td>
+                        <a href="<?php echo $block->getUrl("simpleblog/index/detail/") . "tigren_blog_post_id/" . $post->getTigrenBlogPostId() ?>"><?php echo $post->getTitle() ?></a>
+                    </td>
+                    <td><?php echo $post->getShortContent() ?></td>
+                </tr>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </table>
+</div>
+<div id="testdiv">
+    <a>Test anchor tag</a>
+</div>
+<input id="texttest"></input>
+<div data-mage-init='{"Tigren_SimpleBlog/js/codechallenge2":
+ {"inittest": "value init test"}
+}'>
+</div>
+<div data-mage-init='{"Tigren_SimpleBlog/js/codechallenge2":{}}'>
+    <div id="element">
+        <div data-role="collapsible">
+            <div data-role="trigger">
+                <span>Title 1</span>
+            </div>
+        </div>
+        <div data-role="content">Content 1</div>
+
+        <div data-role="collapsible">
+            <div data-role="trigger">
+                <span>Title 2</span>
+            </div>
+        </div>
+        <div data-role="content">Content 2</div>
+
+        <div data-role="collapsible">
+            <div data-role="trigger">
+                <span>Title 3</span>
+            </div>
+        </div>
+        <div data-role="content">Content 3</div>
+    </div>
+</div>
+
+<?php
+$formData = [
+    'divElement' => '#testdiv',
+];
+$serializedFormData = $this->helper('Magento\Framework\Json\Helper\Data')->jsonEncode($formData);
+?>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "wktestrequire": <?php echo $serializedFormData; ?>,
+            "wktestrequire2": <?= $block->getJsLayout() ?>
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+</script>
+

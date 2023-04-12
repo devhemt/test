@@ -1,0 +1,68 @@
+<?php
+/**
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ */
+/** @var \Tigren\SimpleBlog\Block\Posts $block */
+?>
+<?php
+$items = $block->getItems()[0];
+$rowspan = $block->getItems()[1];
+?>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+
+</style>
+<div class="post-content">
+
+    <table style="width:100%">
+        <tr>
+            <th><?php echo __('Order Id') ?></th>
+            <th><?php echo __('Rule Id') ?></th>
+            <th><?php echo __('Discount Amount') ?></th>
+        </tr>
+        <?php if (count($items)) : ?>
+            <?php $flag = null;
+            foreach ($items as $item) : ?>
+                <tr>
+                    <?php
+                    if ($item['order_id'] != $flag) : $flag = $item['order_id']; ?>
+                        <td rowspan="<?php echo $rowspan[$flag] ?>"><?php echo $item['order_id'] ?></td>
+                    <?php endif; ?>
+                    <td><?php echo $item['rule_id'] ?></td>
+                    <td><?php echo $item['discount_amount'] ?> %</td>
+                </tr>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </table>
+
+</div>
+<button id="testBtn" data-mage-init='{"test_js": {}}'>
+    TEST JS
+</button>
+<button id="modal-btn" data-mage-init='{"test_modal": {}}'>
+    Open Modal
+</button>
+<div id="modal-content">
+    <div class="modal-inner-content">
+        <h2>Modal Title</h2>
+        <p>Modal content.....</p>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<!-- @author    Tigren Solutions <info@tigren.com>-->
+<!-- @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.-->
+<!-- @license   Open Software License ("OSL") v. 3.0-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tigren::top_level" title="Tigren" module="Tigren_SimpleBlog" sortOrder="9999" resource="Magento_Backend::content" />
+        <add id="Tigren_SimpleBlog::tigren_simpleblog_tigren_blog_post" title="tigren blog post" module="Tigren_SimpleBlog" sortOrder="9999" resource="Magento_Backend::content" parent="Tigren::top_level" action="tigren_simpleblog/tigrenblogpost/index" />
+        <add id="Tigren_SimpleBlog::tigren_simpleblog_tigren_blog_category" title="tigren blog category" module="Tigren_SimpleBlog" sortOrder="9998" resource="Magento_Backend::content" parent="Tigren::top_level" action="tigren_simpleblog/tigrenblogcategory/index" />
+        <add id="Tigren_SimpleBlog::hello_configuration" title="Configuration" module="Tigren_SimpleBlog" sortOrder="997" parent="Tigren::top_level" action="adminhtml/system_config/edit/section/hello"
+             resource="Tigren_SimpleBlog::hello_configuration" />
+    </menu>
+</config>

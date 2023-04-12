@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<!-- @author    Tigren Solutions <info@tigren.com>-->
+<!-- @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.-->
+<!-- @license   Open Software License ("OSL") v. 3.0-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="tigren_simpleblog_tigren_blog_category" resource="default" engine="innodb" comment="tigren_simpleblog_tigren_blog_category Table">
+        <column xsi:type="int" name="tigren_blog_category_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="tigren_blog_category_id" />
+        </constraint>
+        <column name="name" nullable="true" xsi:type="text" comment="name" />
+        <column name="description" nullable="true" xsi:type="text" comment="description" />
+        <column name="status" nullable="true" xsi:type="smallint" comment="status" identity="false" />
+        <column name="created_at" nullable="true" xsi:type="datetime" comment="created_at" />
+        <column name="updated_at" nullable="true" xsi:type="datetime" comment="updated_at" />
+    </table>
+    <table name="tigren_simpleblog_tigren_blog_post" resource="default" engine="innodb" comment="tigren_simpleblog_tigren_blog_post Table">
+        <column xsi:type="int" name="tigren_blog_post_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="tigren_blog_post_id" />
+        </constraint>
+        <column name="title" nullable="true" xsi:type="text" comment="title" />
+        <column name="post_image" nullable="true" xsi:type="text" comment="post_image" />
+        <column name="list_image" nullable="true" xsi:type="text" comment="list_image" />
+        <column name="full_content" nullable="true" xsi:type="text" comment="full_content" />
+        <column name="short_content" nullable="true" xsi:type="text" comment="short_content" />
+        <column name="author" nullable="true" xsi:type="text" comment="author" />
+        <column name="published_at" nullable="true" xsi:type="datetime" comment="published_at" />
+        <column name="status" nullable="true" xsi:type="smallint" comment="status" identity="false" />
+    </table>
+</schema>

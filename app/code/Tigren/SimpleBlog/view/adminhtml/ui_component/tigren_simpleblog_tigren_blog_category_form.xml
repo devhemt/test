@@ -1,0 +1,100 @@
+<?xml version="1.0" ?>
+<!-- @author    Tigren Solutions <info@tigren.com>-->
+<!-- @copyright Copyright (c) 2022 Tigren Solutions <https://www.tigren.com>. All rights reserved.-->
+<!-- @license   Open Software License ("OSL") v. 3.0-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">tigren_simpleblog_tigren_blog_category_form.tigren_blog_category_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="Tigren\SimpleBlog\Block\Adminhtml\Tigren\Blog\Category\Edit\BackButton" />
+            <button name="delete" class="Tigren\SimpleBlog\Block\Adminhtml\Tigren\Blog\Category\Edit\DeleteButton" />
+            <button name="save" class="Tigren\SimpleBlog\Block\Adminhtml\Tigren\Blog\Category\Edit\SaveButton" />
+            <button name="save_and_continue" class="Tigren\SimpleBlog\Block\Adminhtml\Tigren\Blog\Category\Edit\SaveAndContinueButton" />
+        </buttons>
+        <namespace>tigren_simpleblog_tigren_blog_category_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>tigren_simpleblog_tigren_blog_category_form.tigren_blog_category_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="tigren_blog_category_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/save" />
+        </settings>
+        <dataProvider name="tigren_blog_category_form_data_source" class="Tigren\SimpleBlog\Model\Tigrenblogcategory\DataProvider">
+            <settings>
+                <requestFieldName>tigren_blog_category_id</requestFieldName>
+                <primaryFieldName>tigren_blog_category_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label>General</label>
+        </settings>
+        <field name="name" formElement="textarea" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">tigren_blog_category</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">name</label>
+                <dataScope>name</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="description" sortOrder="10" formElement="wysiwyg" template="ui/form/field">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">tigren_blog_category</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="is_pagebuilder_enabled" xsi:type="boolean">false</item>
+                        <item name="toggle_button" xsi:type="boolean">true</item>
+                        <item name="height" xsi:type="string">200px</item>
+                        <item name="add_variables" xsi:type="boolean">true</item>
+                        <item name="add_widgets" xsi:type="boolean">true</item>
+                        <item name="add_images" xsi:type="boolean">true</item>
+                        <item name="add_directives" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Description</label>
+                <dataScope>description</dataScope>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <rows>5</rows>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+        <field name="status" sortOrder="80" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Tigren\SimpleBlog\Model\System\Config\Status</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" translate="true" xsi:type="string">Status</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>
